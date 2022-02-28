@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import ClientForm from '../views/ClientForm.vue'
 import ClientsLists from '../views/ClientsLists.vue'
+import ClientForm from '../views/ClientForm.vue'
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/new-client',
+    path: '/newclient',
     name: 'ClientForm',
     component: ClientForm
   },

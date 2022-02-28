@@ -9,4 +9,4 @@ export default {
     name:"ClientsLists",
     
 }
-</script>©
+</script>
