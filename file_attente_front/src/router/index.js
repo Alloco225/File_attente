@@ -2,12 +2,22 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import ClientsLists from '../views/ClientsLists.vue'
 import ClientForm from '../views/ClientForm.vue'
+import CodeView from '../views/CodeView.vue'
+import AdminPage from '../views/AdminPage.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+
+
+  {
+    path:'/codeview',
+    name:"CodeView",
+    component:CodeView
+
   },
   {
     path: '/newclient',
@@ -18,6 +28,11 @@ const routes = [
     path: '/clientslists',
     name: 'ClientsLists',
     component: ClientsLists
+  },
+  {
+    path: '/adminpage',
+    name: 'AdminPage',
+    component: AdminPage
   },
   {
     path: '/about',
