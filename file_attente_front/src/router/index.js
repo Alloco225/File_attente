@@ -22,7 +22,8 @@ const routes = [
   {
     path: '/newclient',
     name: 'ClientForm',
-    component: ClientForm
+    component: ClientForm,
+   
   },
   {
     path: '/clientslists',
