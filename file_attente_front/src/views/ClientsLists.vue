@@ -35,13 +35,13 @@
                       </div>
                     </td>
                       <td class="p-2 whitespace-nowrap">
-                      <div class="text-left font-xl font-bold">{{client.randomGeneratedString}}</div>
+                      <div class="text-left font-xl font-bold">456BGT</div>
                     </td>
                     <td class="p-2 whitespace-nowrap">
-                      <div class="text-left font-xl font-bold">{{client.demande.name}}</div>
+                      <div class="text-left font-xl font-bold">{{client.demande}}</div>
                     </td>
                     <td class="p-2 whitespace-nowrap">
-                      <div class="text-center font-medium text-green-500">{{client.en_cour}}</div>
+                      <div class="text-center font-medium text-green-500">{{client.detail}}</div>
                     </td>
                    
                   </tr>
@@ -64,42 +64,44 @@ export default {
     return {
       clients: [
        
-        // {
-        //   name: "",
-        //   detail: "",
-        //   demande: "",
+        {
+          username: "yacou",
+          detail: "tes",
+          demande: "Assurance",
          
-        // },
+        },
       ],
       //dataClients:[]
     };
   },
   created(){
-   //this.dataClients  =this.clients.push( this.$route.params.data);
-    // console.log(this.dataClients);
-   
-   // console.log(this.clients);
-    // if(this.clients === null){
-    //    this.clients.push(this.$route.params.data)
 
-    // }else {
-    //   console.log("errer");
-    // }
-    this.getClients();
+     if(this.$route.params.data === null){
+       console.log("Aucune donnée");
+
+    }else {
+    //  this.clients.push(this.$route.params.data);
+    //  console.log("clients",this.clients);
+    var obj=this.$route.params;
+    console.log("route=>",JSON.parse(obj));
+              //007
+}
+  
+   // this.getClients();
 
   },
-  methods: {
-   async  getClients(){
-      await axios.get('http://localhost:4000/api/clients'
+  // methods: {
+  //  async  getClients(){
+  //     await axios.get('http://localhost:4000/api/clients'
           
-       )
-       .then(res =>{
-         this.clients= res.data;
-         console.log("===> api",this.clients);
-       })
+  //      )
+  //      .then(res =>{
+  //        this.clients= res.data;
+  //        console.log("===> api",this.clients);
+  //      })
 
-     }
-  },
+  //    }
+  // },
 };
 </script>
 

@@ -17,7 +17,7 @@
         <h3>Nouveau client</h3>
       </div>
       <!-- section2 -->
-      <form >
+      
         <div class="m-4 p-4">
         <!-- input -->
         <div class="flex justify-center items-center">
@@ -70,7 +70,7 @@
           <div class="w-24"></div>
           
             <button
-              @click="createClient()"
+              @click="createNewClient()"
               class="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white font-2xl px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
             >
               Valider
@@ -78,11 +78,9 @@
                 <i class="fas fa-angle-right"></i>
               </span>
             </button>
-         
         </div>
-       
       </div>
-      </form>
+     
     </div>
   </div>
 </template>
@@ -101,54 +99,57 @@ export default {
         { name: "Entreprises", id: 4 }
       ],
       selected: '',
-      details: ""
+      details: "",
+      
     };
   },
   methods: {
-   createClient(){
-    if(this.username === "" || this.selected === "" || this.details === ""){
-     console.log("les champs sont  vide ");
-    }else{
+  //  createClient(){
+  //   if(this.username === "" || this.selected === "" || this.details === ""){
+  //    console.log("les champs sont  vide ");
+  //   }else{
 
-     axios.post('http://localhost:4000/api/newclient', {
-          username: this.username, demande: this.selected,details:this.details,
+  //    axios.post('http://localhost:4000/api/newclient', {
+  //         username: this.username, demande: this.selected,details:this.details,
 
-          headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Origin, Content-Type,"
-           }
+  //         headers: {
+  //         "Access-Control-Allow-Origin": "*",
+  //         "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+  //         "Access-Control-Allow-Headers": "Origin, Content-Type,"
+  //          }
 
-      })
-      .then(res =>{
-         console.log(res);
-      });
-    this.$router.push("/codeview");
-    }
-   }
+  //     })
+  //     .then(res =>{
+  //        console.log(res);
+  //     });
+  //   this.$router.push("/codeview");
+  //   }
+  //  }
 
 
-    // async createNewClient() {
-    //   if (this.nom === "" || this.selected === "" || this.details === "") {
-    //     console.log("les champs sont  vide ");
+    async createNewClient() {
+      if (this.nom === "" || this.selected === "" || this.details === "") {
+        console.log("les champs sont  vide ");
         
-    //   }
-    //    else {
-    //     console.log("valider");
-    //     const dataClient = {
-    //       name: this.name,
-    //       demande: this.selected,
-    //       details: this.details
-    //     };
-    //     console.log(dataClient);
+      }
+       else {
+        console.log("valider");
+        var dataClient = {
+          username: this.username,
+          demande: this.selected,
+          details: this.details
+        };
+        //console.log(dataClient);
+       // console.log(JSON.stringify(dataClient));
+       var clients =JSON.stringify(dataClient);
 
-    //     this.$router.push({name: 'ClientsLists', params: {data:this.dataClient}});
-    //   }
+       this.$router.push({name: 'ClientsLists', params:{clients}});
+      }
 
-    //   // test
+      // test
 
-    //   // axios
-    // }
+      // axios
+    }
   }
 };
 </script>
