@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import ClientsLists from '../views/ClientsLists.vue'
 import ClientForm from '../views/ClientForm.vue'
+import CodeView from '../views/CodeView.vue'
+import AdminPage from '../views/AdminPage.vue'
 
 const routes = [
   {
@@ -8,10 +11,29 @@ const routes = [
     name: 'Home',
     component: Home
   },
+
+
   {
-    path: '/new-client',
+    path:'/codeview',
+    name:"CodeView",
+    component:CodeView
+
+  },
+  {
+    path: '/newclient',
     name: 'ClientForm',
-    component: ClientForm
+    component: ClientForm,
+   
+  },
+  {
+    path: '/clientslists',
+    name: 'ClientsLists',
+    component: ClientsLists
+  },
+  {
+    path: '/adminpage',
+    name: 'AdminPage',
+    component: AdminPage
   },
   {
     path: '/about',
