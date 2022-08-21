@@ -1,16 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+//import Home from '../views/Home.vue'
 import ClientsLists from '../views/ClientsLists.vue'
 import ClientForm from '../views/ClientForm.vue'
 import CodeView from '../views/CodeView.vue'
 import AdminPage from '../views/AdminPage.vue'
+import Login from'../views/Login.vue'
+
+
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
+  // {
+  //   path: '/newclient',
+  //   name: 'Home',
+  //   component: Home
+  // },
 
 
   {
@@ -20,9 +23,21 @@ const routes = [
 
   },
   {
-    path: '/newclient',
+    path: '/',
     name: 'ClientForm',
     component: ClientForm,
+   
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+   
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
    
   },
   {

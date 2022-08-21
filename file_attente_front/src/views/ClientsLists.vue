@@ -2,6 +2,9 @@
   <div>
     <!-- component -->
     <section class="antialiased bg-gray-100 text-gray-600 h-screen px-4">
+      <router-link to="/login">    
+      <button class="mt-4 object-none object-right-top bg-blue-600 text-white font-bold px-4 py-1 animate-bounce rounded " >clic here to adminpage</button>
+      </router-link>
       <div class="  flex flex-col justify-center h-full">
         <!-- Table -->
         <div class="overflow-auto   w-full max-w-3xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200 h-2/3">
@@ -41,7 +44,7 @@
                       <div class="text-left font-xl font-bold">{{client.demande.name}}</div>
                     </td>
                     <td class="p-2 whitespace-nowrap">
-                      <div class="text-center font-medium text-green-500">{{client.en_cour}}</div>
+                      <div class="text-center font-medium text-green-500">{{client.status}}</div>
                     </td>
                    
                   </tr>
@@ -52,6 +55,7 @@
         </div>
       </div>
     </section>
+   
   </div>
 </template>
 
@@ -90,7 +94,7 @@ export default {
   },
   methods: {
    async  getClients(){
-      await axios.get('http://localhost:4000/api/clients'
+      await axios.get('http://localhost:4000/api/currenttask'
           
        )
        .then(res =>{
@@ -98,7 +102,8 @@ export default {
          console.log("===> api",this.clients);
        })
 
-     }
+     },
+     
   },
 };
 </script>

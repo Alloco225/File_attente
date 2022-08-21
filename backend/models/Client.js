@@ -11,16 +11,17 @@ const Client = new mongoose.Schema({
     details:{
         type:String,
     },
-    en_cour:{
-        type:Boolean,
-        default:true,
+    status:{
+        type:String,
+        default:'en cour',
     },
-    
+  
     randomGeneratedString: {
         type: String,
         minlength: 6,
         maxlength: 10,
       },
+      
 },
 { timestamps: true },
 )
@@ -36,5 +37,11 @@ Client.pre('save', async function (next) {
   });
 
 
+  
+
+
+
 
 module.exports= mongoose.model('Client',Client);
+
+

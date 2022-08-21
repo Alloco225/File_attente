@@ -2,18 +2,7 @@
   <div class="mt-4">
     <div class="w-1/2 h-96 bg-white shadow-xl mx-auto">
       <!-- image -->
-      <div
-        class="
-          w-32
-          h-32
-          bg-white
-          mx-auto
-          mt
-          rounded
-          bg-cover
-          bg-[url('https://cdn.jotfor.ms/img/Thankyou-iconV2.png?v=0.1')]
-        "
-      ></div>
+      <div class=" w-32 h-32 bg-white mx-auto mt rounded bg-cover bg-[url('https://cdn.jotfor.ms/img/Thankyou-iconV2.png?v=0.1')]"></div>
       <h2 class="font-bold text-2xl mt-2">Merci ! {{username}}</h2>
       <h5>Votre soumision a été bien enregistré.</h5>
 
@@ -27,26 +16,7 @@
       <!-- lie vers la liste des clients -->
       <router-link to="/clientslists">
         <button
-          class="
-            mx-2
-            my-2
-            bg-green-500
-            transition
-            duration-150
-            ease-in-out
-            hover:bg-green-700
-            rounded
-            text-white
-            font-2xl
-            px-6
-            py-2
-            text-lg
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-indigo-600
-          "
-        >
+          class=" mx-2 my-2 bg-green-500 transition duration-150 ease-in-out  hover:bg-green-700 rounded text-white font-2xl px-6 py-2 text-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" >
           Consulter la liste des clients en cour
         </button>
       </router-link>
@@ -67,19 +37,18 @@ export default {
      username:''
     };
   },
-  watch:{
-     
-  },
- async created() {
+
+ async mounted() {
+   
+ 
   // GET request using fetch with async/await
-  const response = await fetch("http://localhost:4000/api/currentclient");
+  const response = await fetch("http://localhost:4000/api/lastclients");
   const data = await response.json();
   this.clients = data;
-    this.username=this.clients[0].username;
+  this.username=this.clients[0].username;
   this.code=this.clients[0].randomGeneratedString;
   
-   console.log(this.code);
-   console.log(this.username);
+
 },
   methods: {
 

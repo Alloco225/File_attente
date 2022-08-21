@@ -1,8 +1,10 @@
 <template>
+
   <div class="flex">
+
     <!-- background left -->
     <div
-      class="w-1/2 h-screen bg-[url('https://i.pinimg.com/originals/20/50/e6/2050e61dde59a5084e11d935fa3cafcb.jpg')]"
+      class="w-1/2 h-screen bg-cover bg-[url('https://i.pinimg.com/originals/20/50/e6/2050e61dde59a5084e11d935fa3cafcb.jpg')]"
     >text</div>
     <div class="w-1/2">
       <!-- user rounded -->
@@ -17,7 +19,7 @@
         <h3>Nouveau client</h3>
       </div>
       <!-- section2 -->
-      <form >
+      <form @submit.prevent="createClient">
         <div class="m-4 p-4">
         <!-- input -->
         <div class="flex justify-center items-center">
@@ -70,7 +72,7 @@
           <div class="w-24"></div>
           
             <button
-              @click="createClient()"
+              
               class="mx-2 my-2 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded text-white font-2xl px-6 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
             >
               Valider
@@ -105,25 +107,46 @@ export default {
     };
   },
   methods: {
-   createClient(){
+   async createClient(){
+   
     if(this.username === "" || this.selected === "" || this.details === ""){
      console.log("les champs sont  vide ");
     }else{
 
-     axios.post('http://localhost:4000/api/newclient', {
-          username: this.username, demande: this.selected,details:this.details,
+      try {
+          let data = await axios.post('http://localhost:4000/api/newclient', {
+                username: this.username, demande: this.selected,details:this.details,
 
-          headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Origin, Content-Type,"
-           }
+                headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "Origin, Content-Type,"
+                }
 
-      })
-      .then(res =>{
-         console.log(res);
-      });
-    this.$router.push("/codeview");
+            })
+
+            if (data) {
+              console.log(data);
+              this.$router.push("/codeview");
+            }
+            
+      } catch (error) {
+        console.log(error);
+      }
+    //  axios.post('http://localhost:4000/api/newclient', {
+    //       username: this.username, demande: this.selected,details:this.details,
+
+    //       headers: {
+    //       "Access-Control-Allow-Origin": "*",
+    //       "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+    //       "Access-Control-Allow-Headers": "Origin, Content-Type,"
+    //        }
+
+    //   })
+    //   .then(res =>{
+    //      console.log(res);
+    //   });
+    //   this.$router.push("/codeview");
     }
    }
 
